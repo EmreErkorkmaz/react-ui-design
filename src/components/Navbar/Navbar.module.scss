@@ -1,0 +1,207 @@
+@import "../../GlobalStyles/main.scss";
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 19;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+    .nav-menu {
+      display: flex;
+      justify-content: flex-end;
+      // grid-template-columns: repeat(4, auto);
+      // grid-gap: 10px;
+      list-style: none;
+      text-align: center;
+      width: 60vw;
+      justify-content: end;
+      margin-right: 2rem;
+    }
+    .nav-item {
+      height: 70px;
+      .nav-links {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 0 1rem;
+        height: 100%;
+        &:hover {
+          border-bottom: 4px solid $text-color;
+          transition: all 0.2s ease-out;
+        }
+      }
+      .nav-links-mobile {
+        display: none;
+      }
+    }
+  }
+  &__logo {
+    color: $text-color;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 20;
+    right: 1rem;
+    top: 1rem;
+    height: 20px;
+    width: 28px;
+    cursor: pointer;
+    @include transition-ease;
+
+    &__burger {
+      position: absolute;
+      right: 0;
+      top: 0.5rem;
+      width: 28px;
+      height: 3px;
+      background: $text-color;
+      @include transition-ease;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        width: 28px;
+        height: 3px;
+        background: $text-color;
+        @include transition-ease;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        width: 20px;
+        height: 3px;
+        background: $text-color;
+        @include transition-ease;
+      }
+
+      &.open {
+        transform: rotate(720deg);
+        background: transparent;
+
+        &::before {
+          transform: rotate(45deg) translate(5px, 8px);
+        }
+        &::after {
+          width: 28px;
+          transform: rotate(-45deg) translate(2.5px, -7px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .menu {
+    display: none;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .menu {
+    display: none;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .NavbarItems {
+    position: relative;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    @include transition-ease;
+    &.active {
+      background: #242222;
+      left: 0;
+      width: 91vw;
+      opacity: 1;
+      @include transition-ease;
+      z-index: 1;
+    }
+    .nav-item {
+      margin-right: 2rem;
+      margin-top: 2rem;
+      .nav-links {
+        text-align: center;
+        padding: 0 1.8rem;
+        width: 100%;
+        display: table;
+        padding: 2rem 0;
+        &:hover {
+          background-color: #fff;
+          color: black;
+          border-radius: 0;
+        }
+      }
+      .nav-links-mobile {
+        display: block;
+        text-align: center;
+        margin: 2rem auto;
+        border-radius: 4px;
+        width: 80%;
+        text-decoration: none;
+        font-size: 1.5rem;
+        background-color: transparent;
+        color: #fff;
+        padding: 14px 20px;
+        border: 1px solid #fff;
+        transition: all 0.3s ease-out;
+        &:hover {
+          background: #fff;
+          color: #242424;
+          transition: 250ms;
+        }
+      }
+    }
+  }
+
+  .navbar__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+  }
+
+  .menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}
